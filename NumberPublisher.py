@@ -1,10 +1,8 @@
-import paho.mqtt.client as mqtt
+import argparse
 import random
 
 from MQQTClientCreator import MQQTClientCreator
 
-Broker = "mqtt.eclipseprojects.io"
-BrokerPort = 1883
 Topic = "Number23847923"
 
 
@@ -14,8 +12,6 @@ def generate_number():
 
 def publish_number(num):
     client = MQQTClientCreator().create_connected_client("NumberGenerator")
-    client.connect(Broker, BrokerPort)
-
     client.publish(Topic, num)
     print(f"Published {str(num)} to topic '{Topic}'")
 
@@ -23,3 +19,17 @@ def publish_number(num):
 def publish_rand_number():
     num = generate_number()
     publish_number(num)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('first_arg', nargs='?', type=int, help='number to publish (random 1-100 chosen if not supplied)', default=None)
+    args = parser.parse_args()
+    if args.first_arg is None:
+        publish_rand_number()
+    else:
+        publish_number(args.first_arg)
+
+
+if __name__ == '__main__':
+    main()

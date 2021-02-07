@@ -1,4 +1,4 @@
-import paho.mqtt.client as mqtt
+import argparse
 import time
 
 from MQQTClientCreator import MQQTClientCreator
@@ -6,7 +6,6 @@ from MQQTClientCreator import MQQTClientCreator
 
 class NumberSubscriber:
     Topic = "Number23847923"
-
 
     def on_connect(self, client, userdata, flags, reasonCode, properties=None):
         print("Connected With Result Code ", reasonCode)
@@ -25,6 +24,14 @@ class NumberSubscriber:
         client.message_callback_add(self.Topic, self.message_callback)
         time.sleep(timeout)
         client.loop_stop()
-        # client.loop_forever()
 
-        # subscribe_numbers()
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('first_arg', nargs='?', type=int, help='time (seconds) to listen for', default=10)
+    args = parser.parse_args()
+    NumberSubscriber().print_subscribed_numbers(args.first_arg)
+
+
+if __name__ == '__main__':
+    main()
