@@ -1,15 +1,11 @@
-import logging
+
 import time
 import unittest
-from encodings import utf_8
-from encodings.utf_8 import encode
-from unittest.mock import Mock, ANY
 
-from MQQTClientCreator import MQQTClientCreator
+from unittest.mock import Mock, ANY
 from NumberSubscriber import NumberSubscriber
 
-from NumberPublisher import generate_number, publish_number, Broker, Topic
-import paho.mqtt.client as mqtt
+from NumberPublisher import publish_number
 
 
 class NumberGeneratorTest(unittest.TestCase):

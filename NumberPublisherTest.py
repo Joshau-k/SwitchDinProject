@@ -3,7 +3,7 @@ import time
 import unittest
 
 import NumberSubscriber
-from NumberPublisher import generate_number, publish_number, Broker, Topic
+from NumberPublisher import generate_number
 import paho.mqtt.client as mqtt
 
 
