@@ -1,9 +1,8 @@
 import argparse
 import random
 
+from config import Topic
 from MQQTClientCreator import MQQTClientCreator
-
-Topic = "Number23847923"
 
 
 def generate_number():

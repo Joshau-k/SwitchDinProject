@@ -1,11 +1,10 @@
 import paho.mqtt.client as mqtt
-import time
 
-Broker = "mqtt.eclipseprojects.io"
-BrokerPort = 1883
+from config import Broker, BrokerPort
 
 
 class MQQTClientCreator:
+
     def on_connect(self, client, userdata, flags, reasoncode, properties=None):
         print("Connected With Result Code ", reasoncode)
 

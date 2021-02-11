@@ -1,8 +1,5 @@
-import logging
 import time
 import unittest
-from encodings import utf_8
-from encodings.utf_8 import encode
 from unittest.mock import Mock, ANY
 
 from MQQTClientCreator import MQQTClientCreator

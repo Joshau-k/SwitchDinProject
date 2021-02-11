@@ -1,9 +1,12 @@
-const broker = 'mqtt.eclipseprojects.io';
-let client = new Paho.MQTT.Client(broker, 80, "webSubscriber");
+// const broker = 'mqtt.eclipseprojects.io';
+const broker = "localhost";
+let port = 80;
+let client = new Paho.MQTT.Client(broker, port, "", "webSubscriber");
+let topic = "numbers";
 
 function onConnect() {
   console.log("onConnect");
-  client.subscribe("Number23847923");
+  client.subscribe(topic);
 }
 
 function mqqtConnect() {
